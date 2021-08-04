@@ -13,29 +13,67 @@
 
 Why do we need targeted advertising?
 
+Any advertising or marketing business has a vested interest to make their ads relevant, especially on the world wide web, where the user is, at least to a certain extent, anonymous. In its very basic, offline form, agencies would use context to place their ads; as an example you might see advertising for cars on busy roads or advertising for food near supermarkets.
+
+In the online world, targeting users can be much more granular and automated, with the ideal outcome of showing an ad exactly at the right time and the right place (e.g. web site) for the user to see it, and with a need that it fulfills, have the user buy the product.
+
+To achieve this, ad placement uses micro-targeting on the world wide web.
+
 "Microtargeting is a marketing strategy that uses people’s data — about what they like, who they’re connected to, what their demographics are, what they’ve purchased, and more — to segment them into small groups for content targeting. It’s the reason that if you typically shop at Whole Foods, you may be served an advertisement for organic sunscreen during the Summer. And while it can help deliver content that is interesting and helpful to you, it also has a dark side — especially if it delivers information that’s inaccurate or biased and meant to sway your vote."\footnote{\textit{Ghosh, D. (2018)}: What is microtargeting? \cite{mozillaBlog}}
+
+From a business point of view, micro targeting dramatically increases the relevance of the shown advertising and thus the likelihood of the user noticing it. Even if it does not lead to a sale right away, any product awareness helps and might lead to a sale in the future. 
+
+Give the automated nature of ad placement on web pages, ads do not need to be shown in bulk, like in the offline world, but can be shown individually and with high relevance.
 
 \subsubsection{Tracking}
 
-Tracking is under attack from multiple angles\footnote{See \textit{Brinkmann, M. (2021)}: How Firefox new SmartBlock feature works \cite{mozillaBlog}}
+To achieve this, it is necessary to gather more information on the interests of a particular user and follow their interests across the web; this mechanism is called tracking. Tracking as of today heavily relies on the use of cookies, small pieces of information stored in the users' browser, which we will explain in the next section.
 
-Even Google, who invented various tracking methods, will no longer support it in Chrome.
+Tracking can span web sites and companies - it is not limited to one company keeping a record of ones visits, currently it also includes the ability to analyze all visits on cooperating pages and show, for example, ads on Facebook based on your recent queries at Amazon. Technically this can be achieved through third-party cookies.
+
+Third-party cookies are cookies set by another website than the one you're currently visiting and that can be later evaluated from the website.\footnote{See \textit{Cookie Script (2021)}: All you need to know about Third-Party Cookies \cite{mozillaBlog}}
+
+Tracking through third-party cookies is under attack from multiple angles;\footnote{See \textit{Brinkmann, M. (2021)}: How Firefox new SmartBlock feature works \cite{mozillaBlog}} even Google, who invented it among various other tracking methods, will no longer support it in \href{https://www.google.com/chrome/}{Chrome} after 2023.\footnote{See \textit{Goel, V. (2021)}: An updated timeline for Privacy Sandbox milestones. \cite{sandboxDelay}}
 
 \subsubsection{Cookies}
 
-We will focus on Cookies and web browser as the main tracking mechanisms.
-
 A cookie is a small piece of information that a server sends to the user's web browser for storage, and which it can request back at a later point in time.
 
-Cookies can be used for session management, personalizing and tracking.\footnote{See \textit{Mozilla (2021)}: Using HTTP cookies \cite{usingCookies}}
+Cookies can be used for session management, personalizing and tracking.\footnote{See \textit{Mozilla (2021)}: Using HTTP cookies \cite{usingCookies}}. For the purpose of this paper, we will focus solely on the tracking aspect, especially across sites, and not cover the more benign use cases for cookies, such as session management.
 
-There's also tracking in E-Mail\footnote{See \textit{Doffmann, Z. (2021)}: Why You Suddenly Need To Delete Gmail On Your iPhone \cite{deleteGmail}}, which we will ignore for this paper.
+Cookies in itself are not malign and greatly support the user's experience across the web. however, they also show a persistent history of the user's activities.
+
+Let's have a look at where cookies live on a user's browser. As an example, we will look at \href{https://www.mozilla.org/en-US/firefox/new/}{Firefox}, which stores its cookies in a \href{https://www.sqlite.org/index.html}{SQLite} database in the user's profile directory. Using \href{https://sqlitebrowser.org/}{DB Browser for SQLite}, we can examine the cookies:
+
+\begin{figure}[H]
+\centering
+\caption {Cookies}
+\includegraphics[width=\linewidth]{images/cookie-sqlite.png}
+\label{fig:cookies}
+\end{figure}
+
+In its essence, cookies are a simple per-host key-value store in the browser; it's up to the web site to define which keys it wants to store. If a web site accesses it's own entries (as defined in the hosts column), that's called first-party data, or first-party cookies and could be used for session persistence, as seen in the first column.
+
+If a web site accesses data from another site, that's when we're talking about third-party data, or third-party cookies which is used to track users on their visits across different web sites.
+
+In addition to tracking in the web browser, there's also tracking in E-Mail\footnote{See \textit{Doffmann, Z. (2021)}: Why You Suddenly Need To Delete Gmail On Your iPhone \cite{deleteGmail}}, which we will not cover in this paper.
 
 \subsection{Data Types}
 
 \subsubsection{First-Party Data}
 
-First party data is data that we collect from our own sources.\footnote{See \textit{OnAudience (2019)}: What is first party data? \cite{firstParty}}
+Now that we have covered cookies as a mechanism to persist data in the user's browser, we need to look at the various classes of data. The definition for first party data is actually quite simple, it is data that we collect from our own sources.\footnote{See \textit{OnAudience (2019)}: What is first party data? \cite{firstParty}} Data could include information that we retrieve from our own cookies or from any information the user might have left on our website, for example by looking at an item.
+
+In e-Commerce, a common use case would be to follow up on an abandoned sale, where the user looked at an item but did not put it into their shopping cart:
+
+\begin{figure}[H]
+\centering
+\caption {Don't Wait}
+\includegraphics[width=\linewidth]{images/zumiez-dont-wait.png}
+\label{fig:zumiez}
+\end{figure}
+
+This screenshot was taken from an E-Mail by \href{https://www.zumiez.com/}{Zumiez}; another example of clever use of first-party data are the regular notifications from \href{https://www.netflix.com/de-en/}{Netflix} to finish the season of a series you just started.
 
 \subsubsection{Second-Party Data}
 
@@ -45,11 +83,17 @@ Second party data is another companies first party data.\footnote{See \textit{On
 
 Third party data is additional data that you buy from specialized sources on the web to enrich your own data.\footnote{See \textit{OnAudience (2019)}: What is first party data? \cite{firstParty}}
 
+- auch bei 2.2.3 würde ich mir mehr „Futter“ wünschen - was macht Third Party Cookies so besonders? Warum gibt es hier viel Diskussion zu?
+
+—> gerade in Kapitel 2 musst du es schaffen, jemandem der sich noch nie mit dem Thema beschäftigt hat, das Gefühl eines Überblicks und einer Einführung geben. Grundlagendefinitionen und Erklärungen.
+
 \subsection{Tool-stack - Analytics}
 
 \subsubsection{Google Analytics}
 
 \href{https://analytics.google.com/}{Google Analytics} gives you all the tools to analyze your web business data and gain insights into your campaign performances.
+
+- 2.3.1 - auch hier: du gibst eine Definition, fine. Aber danach gib dem Leser noch was an die Hand. ZB wie verbreitet ist das Tool, wer nutzt es?
 
 \subsubsection{Open Source Analytics}
 
@@ -77,6 +121,8 @@ We can also analyze key performance indicators for our campaigns, such as Click-
 \href{https://ads.google.com/home/}{Google Ads} is a platform to place ads on Google's pages and affiliates.
 
 Placement and Algorithm is a science unto itself; recently Google has come under scrutint from the regulators and in one case, agreed to the ruling and the fine.\footnote{See \textit{Burgess, M. (2021)}: France Cracked Down on Google’s Ad Tech \cite{googleAds}}
+
+- 2.4: evtl macht es hier Sinn, sich nicht in zu starke Untergliederungen zu verlieren - fasse lieber das, was du sagen möchtest in einem kurzen Abschnitt zusammen (Schwerpunktsetzung ist ein wichtiges Kriterium bei der Bewertung)
 
 \subsubsection{Amazon Advertising}
 
@@ -124,3 +170,6 @@ There's a number of legal frameworks that govern tracking and advertising, here'
 \end{itemize}
 
 In this paper, we will assume that the reader is familiar with the content of the various regulations and solely focus on their impact and interpretation.
+
+- 2.6: hier würde ich empfehlen, entweder die konkreten Stellen zu benennen oder die Auflistung wegzulassen und durch einen kleinen Text zu ersetzen, der deutlich macht, welche Rechtsquellen besonders wichtig und welche ergänzend wichtig sind
+
