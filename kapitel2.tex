@@ -35,15 +35,19 @@ Third-party cookies are cookies set by another website than the one you're curre
 
 Tracking through third-party cookies is under attack from multiple angles;\footnote{See \textit{Brinkmann, M. (2021)}: How Firefox new SmartBlock feature works \cite{mozillaBlog}} even \href{https://www.google.com/}{Google}, who invented it among various other tracking methods, will no longer support it in \href{https://www.google.com/chrome/}{Chrome} after 2023.\footnote{See \textit{Goel, V. (2021)}: An updated timeline for Privacy Sandbox milestones. \cite{sandboxDelay}}
 
+Placing targeted currently makes heavy use of tracking, especially in the form of tracking cookies, however, it can also make use of public available information, such as social media posts, as we will see later in this paper.
+
 \subsubsection{Cookies}
+
+Let's go back to cookies and have a look at what it is.
 
 A cookie is a small piece of information that a server sends to the user's web browser for storage, and which it can request back at a later point in time.
 
-Cookies can be used for session management, personalizing and tracking.\footnote{See \textit{Mozilla (2021)}: Using HTTP cookies \cite{usingCookies}}. For the purpose of this paper, we will focus solely on the tracking aspect, especially across sites, and not cover the more benign use cases for cookies, such as session management.
+Cookies can be used for session management, personalizing and tracking.\footnote{See \textit{Mozilla (2021)}: Using HTTP cookies \cite{usingCookies}}. For the purpose of this paper, we will focus solely on the tracking aspect, especially across sites, and do not cover the more benign use cases for cookies, such as session management, in any detail.
 
-Cookies in itself are not malign and greatly support the user's experience across the web. however, they also show a persistent history of the user's activities.
+From this explanation we can see that cookies in itself are not malign and greatly support the user's experience across the web. However, they also include a persistent history of the user's activities and can be used to track the users' journey across the web.
 
-Let's have a look at where cookies live on a user's browser. As an example, we will look at \href{https://www.mozilla.org/en-US/firefox/new/}{Firefox}, which stores its cookies in a \href{https://www.sqlite.org/index.html}{SQLite} database in the user's profile directory. Using \href{https://sqlitebrowser.org/}{DB Browser for SQLite}, we can examine the cookies:
+Let's have a look at where cookies live on a user's browser. As an example, we will look at \href{https://www.mozilla.org/en-US/firefox/new/}{Firefox}, which stores its cookies in a \href{https://www.sqlite.org/index.html}{SQLite} database in the user's profile directory. Using \href{https://sqlitebrowser.org/}{DB Browser for SQLite}, we can have a look at the cookies on my computer:
 
 \begin{figure}[H]
 \centering
@@ -52,28 +56,34 @@ Let's have a look at where cookies live on a user's browser. As an example, we w
 \label{fig:cookies}
 \end{figure}
 
-In its essence, cookies are a simple per-host key-value store in the browser; it's up to the web site to define which keys it wants to store. If a web site accesses it's own entries (as defined in the hosts column), that's called first-party data, or first-party cookies and could be used for session persistence, as seen in the first column.
+In its technical essence, cookies are a simple key-value store in the browser, that stores its data per host, or more precisely, per web site. It's entirely up to the web site to define which keys it wants to store and which values it wants to set and thus persist across visits. 
 
-If a web site accesses data from another site, that's when we're talking about third-party data, or third-party cookies which is used to track users on their visits across different web sites.
+If a web site accesses it's own entries (as defined in the hosts column), that's called a first party cookies and it's part of first party data, an could be used for session persistence, for example, as seen in the first column. We'll define data types in the next chapter.
 
-In addition to tracking in the web browser, there's also tracking in E-Mail\footnote{See \textit{Doffmann, Z. (2021)}: Why You Suddenly Need To Delete Gmail On Your iPhone \cite{deleteGmail}}, which we will not cover in this paper.
+If a web site accesses data from another site, that's when we're talking about referencing third party cookies as part of third-party data. Data from other web site's cookies could be used to track users on their visits across different web sites and has become a big privacy concern over the last couple of years. This tracking aspect across sites is what primarily motivates this paper.
+
+In addition to tracking in the web browser, there's also tracking in E-Mail\footnote{See \textit{Doffmann, Z. (2021)}: Why You Suddenly Need To Delete Gmail On Your iPhone \cite{deleteGmail}}, however, we will not cover E-Mail tracking in this paper.
 
 \subsection{Data Types}
 
 \subsubsection{First Party}
 
-Now that we have covered cookies as a mechanism to persist data in the user's browser, we need to look at the various classes of data. The definition for first party data is actually quite simple, it is data that we collect from our own sources.\footnote{See \textit{OnAudience (2019)}: What is first party data? \cite{firstParty}} Data could include information that we retrieve from our own cookies or from any information the user might have left on our website, for example by looking at an item.
+Now that we have covered cookies as a mechanism to persist data in the user's browser across sessions, we need to look at the various classes of data, define their usage and prepare for the analysis of their relevance in regards to privacy regulations.
 
-In e-Commerce, a common use case would be to follow up on an abandoned sale, where the user looked at an item but did not put it into their shopping cart:
+The definition for first party data is actually quite simple, it is data that we collect from our own sources.\footnote{See \textit{OnAudience (2019)}: What is first party data? \cite{firstParty}} Data could include information that we retrieve from our own cookies or from any information the user might have left on our website, for example by looking at an item. It also includes registration information, shop logins and past sales or other interaction. Collection this kind of data is not a big issue from a privacy point of view, as long as it's done correctly and with the necessary precautions against abuse in place.
+
+As an example, in a web shop, a clever use case for using ones own shop data for marketing would be to follow up on an abandoned sale, where the user looked at an item but did not put it into their shopping cart:
 
 \begin{figure}[H]
 \centering
 \caption {Zumiez Follow-Up EMail}
-\includegraphics[width=\linewidth]{images/zumiez-dont-wait.png}
+\includegraphics[scale=0.4]{images/zumiez-dont-wait.png}
 \label{fig:zumiez}
 \end{figure}
 
-This screenshot was taken from an E-Mail by \href{https://www.zumiez.com/}{Zumiez}; another example of clever use of first-party data are the regular notifications from \href{https://www.netflix.com/de-en/}{Netflix} to finish the season of a series you just started, or, as we will see below, the advertising on \href{https://smile.amazon.de/}{Amazon}.
+This screenshot was taken from an E-Mail by \href{https://www.zumiez.com/}{Zumiez}, prompting the user to follow through with buying an item that they looked at a day ago
+
+Another example of clever use of first-party data for marketing are the regular notifications from \href{https://www.netflix.com/de-en/}{Netflix} to finish the season of a series you just started, or, as we will see further below, the advertising on \href{https://smile.amazon.de/}{Amazon}.
 
 % \begin{figure}[H]
 % \centering
@@ -86,15 +96,17 @@ This screenshot was taken from an E-Mail by \href{https://www.zumiez.com/}{Zumie
 
 The second class of data that we will look at is second party data. Simply speaking, second party data is another companies first party data.\footnote{See \textit{OnAudience (2019)}: What is first party data? \cite{firstParty}}
 
-Assuming that two companies use the same identifier for their customers, for example the E-Mail address, one company could sell the shopping history on their site to another company, to enable them to advertise related products.
+Assuming that two companies use the same identifier for their customers, for example the E-Mail address, one company could sell the shopping history on their site to another company, to enable them to advertise related products. Another option would be to not sell the data outright but to establish a cooperation and use the data from both parties across both web sites.
 
-As we will see later in this paper, from a legal perspective, this is the most difficult setup to achieve as the company would need consent from its users to sell their data. It can be achieved though, for example within a conglomerate such as \href{https://www.facebook.com/}{Facebook}, \href{https://www.whatsapp.com/}{Whatsapp} and \href{https://www.instagram.com/}{Instagram}, where the platform users are explicitly asked to allow their data to be shared across all platforms.
+As we will see later in this paper, from a legal perspective, this is the most difficult setup to achieve. Both companies would need explicit consent from all its users to transfer their data to the other company, otherwise they would open themselves up for a lot of legal trouble and violate the trust and privacy of their customers.
 
-If the proper agreements with the users are in place and the sharing is transparent, the use of second party data can be beneficial to both consumers and providers.\footnote{See \textit{Schneier, M.J. (2017)}: Protecting customer privacy when marketing with second-party data \cite{secondParty}}
+It can be achieved though, for example within a conglomerate such as \href{https://www.facebook.com/}{Facebook}, \href{https://www.whatsapp.com/}{WhatsApp} and \href{https://www.instagram.com/}{Instagram}, where platform users are explicitly asked to allow their data to be shared across all platforms. In case of WhatsApp, the annoucement to cooperate on user profiles with the parent company in the short term led to a significant exodus of users and greatly helped the competing platforms. In the long term, however, did the integration go well and the users now experience a streamlined profile management and smoothed interoperability.
+
+In summary, we can conclude that if the proper agreements with the users are in place and the sharing is transparent, the use of second party data can be beneficial to both consumers and providers and can greatly enhance the shopping experience for all involved parties.\footnote{See \textit{Schneier, M.J. (2017)}: Protecting customer privacy when marketing with second-party data \cite{secondParty}}
 
 \subsubsection{Third Party}
 
-The last class of data is third party data. It's defined as additional data that you buy from specialized sources on the web to enrich your own data.\footnote{See \textit{OnAudience (2019)}: What is first party data? \cite{firstParty}}
+The last class of data we want to look at is third party data. It's defined as additional data that you buy from specialized sources on the web to enrich your own data.\footnote{See \textit{OnAudience (2019)}: What is first party data? \cite{firstParty}}
 
 Third party data is inextricably linked to the use of third party cookies. As the user travel the web and leave their traces in the cookies of their browser, data management platforms harvest this information, anonymize it, and create profiles from it.\footnote{See \textit{Shiffman, E. (2020)}: What is Third-Party Data? \cite{thirdParty}} These profiles are then sold and can be used to enrich ones own data.\footnote{See \textit{Sponder, M. (2017)}: Digital Analytics for Marketing - Understanding and Working with Third-Party Data \cite{digitalAnalytics}}
 
