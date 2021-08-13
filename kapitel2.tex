@@ -3,7 +3,7 @@
 %
 
 \pagebreak
-\section{Targeting Background}
+\section{Targeting}
 
 \onehalfspacing
 
@@ -60,11 +60,13 @@ Let's have a look at where cookies live on a user's browser. As an example, we w
 \label{fig:cookies}
 \end{figure}
 
-In its technical essence, cookies are a simple key-value store in the browser, that stores its data per host, or more precisely, per web site. It's entirely up to the web site to define which keys it wants to store and which values it wants to set and thus persist across visits. 
+In its technical essence, cookies are a simple key-value store in the browser, that stores the data per host, or more precisely, per web site. It's entirely up to the web site to define which keys it wants to store and which values it wants to set and thus persist across visits. 
 
-If a web site accesses it's own cookies (as defined in the hosts column), that's called a first party cookies and it's part of first party data. This could be used for session persistence, for example, as seen in the first column. We'll define these data types in the next chapter.
+If a web site accesses it's own cookies (as defined in the hosts column), that's called accessing a first party cookies and it's part of first party data. This could be used for session persistence, for example, as seen in the first row of the image above. 
 
 If a web site accesses data from another site, that's when we're talking about referencing third party cookies as part of third-party data. Data from other web site's cookies could be used to track users on their visits across different web sites and has become a big privacy concern over the last couple of years. This tracking aspect across sites is what primarily motivates this paper.
+
+We will define the various data types in the next chapter.
 
 In addition to tracking in the web browser, there's also tracking in E-Mail\footnote{See \textit{Doffmann, Z. (2021)}: Why You Suddenly Need To Delete Gmail On Your iPhone \cite{deleteGmail}}, however, we will not cover E-Mail tracking in this paper.
 
@@ -130,13 +132,13 @@ Let's first look at the tools that allow us to analyze traffic to our site and e
 
 \href{https://analytics.google.com/}{Google Analytics} is the most widely used tool for web traffic analysis and gives us, according to its website, all the necessary tools to analyze your web business data and gain insights into your campaign performances.
 
-By looking at the data provided, we can gather deep insights into the visitors of our page and predict the performance of our posts.\footnote{See \textit{Frank, C. (2021)}: Web Traffic Analysis - Predicting Blog Post Performance \cite{previousBigdata}} We can also measure the effectiveness of our ad campaigns, which is another and very different topic, and out of scope for this paper.
+By looking at the data provided, we can gather deep insights into the visitors of our page and predict the performance of our posts.\footnote{See \textit{Frank, C. (2021)}: Web Traffic Analysis - Predicting Blog Post Performance \cite{previousBigdata}} We can also measure the effectiveness of our ad campaigns, which is another and very different topic, and with the details being out of scope for this paper.
 
 \subsubsection{Open Source Analytics}
 
 In addition to Google Analytics, there are a couple of other alternatives, some of which are \href{https://opensource.org/osd}{open source}. One example for open source analytics is \href{https://plausible.io/}{Plausible}, which I covered in a previous paper and which claims to be fully compliant to all major privacy legislation.\footnote{See \textit{Frank, C. (2020)}: Usefulness of open-source tools for web analytics in EMarketing \cite{previousPaper}} 
 
-For the scope of this paper, we will from here on only focus on the data sources that we can use to place our campaigns, and not on the metrics that are needed to support our campaigns.
+For the scope of this paper, we will from here on only focus on the data sources that we can use to place our campaigns, and not on the details of the metrics that are needed to support our campaigns.
 
 However, to illustrate, here's a view of a main web analytics dashboard:
 
@@ -149,7 +151,7 @@ However, to illustrate, here's a view of a main web analytics dashboard:
 
 \subsubsection{Yandex Metrica}
 
-If you're reluctant to send data to the US for processing but are at the same time not invested in the open source side of software, \href{https://metrica.yandex.com/}{Yandex Metrica} is another commercial option for web page analytics, covering more than 8 million sites, according to their web page.
+In case you're reluctant to send data to the US for processing but are at the same time not invested in the open source side of software, \href{https://metrica.yandex.com/}{Yandex Metrica} is another commercial option for web page analytics, covering more than 8 million sites, according to their web page.
 
 Metrica is part of the Yandex family of tools; Yandex is headquartered in Moscow, Russia and operates the biggest search engine there.
 
@@ -205,7 +207,7 @@ To achieve this, Google proposes an algorithm to assign cohort ids to individual
 
 The idea behind FLoC itself sounds quite reasonable, it is, however, under heavy fire from a privacy point of view.\footnote{See \textit{Rescorla, E. (2021)}: Privacy analysis of FLoC \cite{privacyFloc}} Among others, \href{https://www.eff.org/}{EFF}\footnote{Disclosure: I am a member and active supporter of EFF} has published a detailed analysis of FLoC's shortcomings in regards to privacy and why they believe that FLoC would be a terrible idea.\footnote{See \textit{Cyphers, B. (2021)}: Google’s FLoC Is a Terrible Idea \cite{terribleIdea}}
 
-One of the biggest concern is that by combining the FLoC data with browser fingerprinting, for example, super profiles could be created that would contain much more information than is available today. In summary, all currently available analysis question the actual ability of FLoC to maintain the user's privacy and foresee a much broader tracking of users and their profiles than currently through the use of third party cookies.
+One of the biggest concern is that by combining the FLoC data with browser fingerprinting, for example, super profiles could be created that would contain much more information than is available today. In summary, all currently available analysis question the actual ability of FLoC to maintain the user's privacy and foresee a much broader tracking of users and their profiles than currently through the use of third party cookies, should it come through.
 
 It is worth to note that the issues with FLoC center around privacy, not the algorithm itself - federarted learning is a well establish technique in the field of machine learning.\footnote{See \textit{Li, T. (2020)}: Federated Learning: Challenges, Methods, and Future Directions \cite{9084352}}
 
