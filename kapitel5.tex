@@ -11,7 +11,7 @@
 
 All our panelists agree that working with your own, first party daty, is the best option going forward. This is especially true for \textbf{Gerrit}, who sees working with first party data as a must for any serious marketeer in the online business. Or, as \href{https://tealium.com/}{Tealium} so succintly put it, "In a World Without Third-Party Cookies, a First-Party Data Strategy Takes the Cake".\footnote{\textit{Tealium (2021)}: First Party Data Strategy Takes the Cake \cite{firstCake}}
 
-To work with our own data, we first need a data strategy.\footnote{See \textit{Dixon, M. (2020)}: How to build a data strategy \cite{dataStrategy}}
+To work with our own data, we first need a data strategy, according to Mel Dixon of the \href{https://www.the-gma.com/}{Global Marketing Alliance}.\footnote{See \textit{Dixon, M. (2020)}: How to build a data strategy \cite{dataStrategy}}
 
 The first step will always be to identify the business need, in this case for our online marketing campaigns. We need to identify what we want to achieve, for example increase sales or diversify our customer base, just to name a few. Once we have these goals defined, we need to identify all the sources of data that we already have, and possibly add new ones through new tools for our web site or shop.
 
@@ -23,7 +23,7 @@ Once we start identifying our customers, though, for example through a login or 
 
 To process PII, we need two things, among others: We need to ask for consent and we need to have a data protection declaration.
 
-Obtaining informed consent, as required by law, can be difficult and \textbf{Roman} has a very distinct view on how to obtain such consent. Similarly, a data protection declaration can also be quite difficult to craft; here's an \href{https://blueropeconsultonline.de/datenschutz/}{example} from \href{https://blueropeconsultonline.de/}{Bluerope Consult} that was created with support from WBS Law, who were also on the expert panel on this paper.
+Obtaining informed consent, as required by law, can be difficult and \textbf{Roman} has a very distinct view on how to obtain such consent. Similarly, a data protection declaration can also be quite difficult to craft; here's an \href{https://blueropeconsultonline.de/datenschutz/}{example} from \href{https://blueropeconsultonline.de/}{Bluerope Consult} that was created with support from WBS Law, for whom \textbf{Renate} was on our expert panel.
 
 Once we have all this in place and can identify our customers, we can now plan our advertising and marketing strategies much better and tailor them precisely for each of our customers - we're delivering personalized advertising, without the use of third party data and completly within the boundary of the law.
 
@@ -36,30 +36,54 @@ There are many also other fun and creative things we can do with our own data, s
 \label{fig:seraph}
 \end{figure}
 
-The other point that we need to make is that with the start of processing PII, the level of data protection and data security that we need to provide in IT immediately increases a lot. Processing PII will open up a whole new avenue of attack vectors and increase the number of potential threads, as outlined in NIST's Guide to Data-Centric System Threat Modeling.\footnote{See \textit{Souppaya, M. (2016)}: Draft NIST Special Publication 800-154 \cite{sp800_154_draft}}
+The other point that we need to make is that with the start of processing PII, the level of data protection and data security that we need to provide in IT immediately increases a lot. Processing PII will open up a whole new avenue of attack vectors and increase the number of potential threads, as outlined in \href{https://www.nist.gov/}{NIST}'s Guide to Data-Centric System Threat Modeling.\footnote{See \textit{Souppaya, M. (2016)}: Draft NIST Special Publication 800-154 \cite{sp800_154_draft}}
 
 Through rigorous scientific analysis we have now identified a most promising strategy for online marketing in a cookie-less era. During our analysis, a number of other options emerged that we will now present, in no particular order.
 
 \subsection{Cooperate on Data}
 
-Text
+Working with second party data, the easiest way to use it would be through a direct cooperation. If two parties were using similar customer identifiers, for example the E-Mail address, the data could be easily combined. 
+
+Let's assume we have an online record shop and another online shop selling sheet music, combining their data would allow both shops to enrich their customer experience by offering better recommendations and offering supplemental things to buy, such as the sheet music for a recently bought record, as an example.
+
+Unfortunately, from a legal point of view, it's much more complicated than from a mere technical point of view. As \textbf{Roman} pointed out, we would need informed consent from all customers in both shops to combine the data. Which could prove to be a task that's almost impossible to achieve, especially if the shops are separate legal entities altogether.
 
 \subsection{Use Data Clean Rooms}
 
-Text
+Another option to combine data would be through data clean rooms; Dylan Siriwardana of \href{https://www.adzine.de/}{Adzine} makes a passionate plea to consider data clean rooms as the strategic choice for the post-cookie era.\footnote{See \textit{Siriwardana, D. (2020)}: Data Clean Rooms als nützliches Werkzeug in der Post-Cookie-Ära \cite{dataClean}}
 
-Dylan Siriwardana makes a passionate plea to consider data clean rooms as strategic choice after for the post-cookie era.\footnote{See \textit{Siriwardana, D. (2020)}: Data Clean Rooms als nützliches Werkzeug in der Post-Cookie-Ära \cite{dataClean}}
+Unlike the more manual approach outlined previously, data clean rooms would offer a service to aggregate the data from different parties automatically and completely anonymized, so that no processing of PII would take place and GPDR/DS-GVO would not apply.
+
+To make such as system work, we would need very large data sets though, and apply machine learning techniques, such as federated learning and cohort building (very similar to Google's FLoC) to correlate the data sets. The correlation would be much less precise than what we could archive from direct combination and would only allow us to establish a correlation on the level of people who like classical music might also be buying big sofas.
+
+The achieved personalization for the advertising might thus not be as high as we want and the success of ad campaigns based on data clean room combination might be limited. However, time will tell, at the time of writing there was not enough data and literature available to pass any form judgement on the technology; especially \textbf{Gerrit} sees a lot of potential in data clean rooms, though.
 
 \subsection{Cooperate Using Contract Processor Agreements}
 
-Text
+If we want to work with any third party on personally identifiable data, and want to avoid the legal hassle that comes with data sharing under GDPR/DS-GVO, we could use the legal instrument of a contract processor, or subprocessor agreement. According to \textbf{Roman}, with such an agreement we would legally incorporate the third party into our business (for the purpose at hand) and would no longer be sharing the data, from a legal point of view.
+
+The downside of such agreements, again according to \textbf{Roman}, would be that we would also take over responsibility and liability for the actions of our subprocessor; this might not be desirable for either party in some cases.
+
+However, unlike data clean rooms, contract processor agreements are a well established practice in IT and covers fields from Google Analytics and other Software-as-a-Service offerings all the way to full IT outsourcing.
 
 \subsection{Stick to Contextual Advertising Only}
 
-Text
+As \textbf{Renate} pointed out, we are only in the realm of DS-GVO/GDPR once we actually process personally identifiable data - for placing personalized or targeted ads that would mean that we (or an involved party) knows to whom the data is shown. Merely showing an ad on a web page for a user to view does not constitute processing PII and is not a privacy issue, as clarified by \textbf{Roman}.
+
+So, if we do not look at the user's data, but only at the web site they visit, we're not invading the user's privacy; in cases where we also not record their visits to the other page, of course. This would leaves the option to place advertising by browsing context, which is sadly not a widely available option. As an example, as an insurance company we could be placing car insurance adverts on a car manufacturer's web page. 
+
+As long as we do not look at the users of the manufacturer's web page, but only work with the users that click our ad and start interacting with our web page, we would be completely safe and working within the boundaries of first party data only.
+
+On the other hand, in our example, if we were to analyze user behavior on the car manufacturer's web page, we would be in third party data territory and most likely violate the user's privacy and the legal provisions of GDPR/DS-GVO, as interesting as the data might be from a marketing point of view.
+
+As in the physical world or in linear TV, just showing ads on a web page is not a privacy issue; an issue could only be with the algorithm that selects which ad gets displayed, says \textbf{Roman}.
 
 \subsection{Continue with Third Party User Profiles}
 
-Text
+Our last and final strategy to deal with the situation at hand could be to simply ignore the current discussions and to continue to work with the third party data available.
 
-As we can see in a recent article on \href{https://www.vice.com/en}{Vice}, there seem to be many more types data on users available on the web than we might think.\footnote{See \textit{Cox, J. (2021)}: Google Bans Location Data Firm \cite{dataClean}}
+As \textbf{Gerrit} mentioned, from his point of view the deed is already done and a lot of data is readily available on all users of world wide web, up for the taking for advertising or other, more nefarious purposes. The loss of third party data from tracking cookies might not be a big issue for the data management companies, as \textbf{Gerrit} assumes that big data applications and machine learning algorithms will be able to fill the void, most likely from all the data that our phones, fitness tracker and digital assistants constantly publish, together with our physical location.
+
+This data could have been made available voluntarily, such as through the user's posts on social media, or involuntarily. As we can guess from a recent article by Joseph Cox on \href{https://www.vice.com/en}{Vice}, there is most likely a lot more data on users available on the web than we might think.\footnote{See \textit{Cox, J. (2021)}: Google Bans Location Data Firm \cite{locationBan}} To further protect our privacy from mobile apps and issues like the one pointed out above, the current privacy-by-design approach might not be good enough for mobile applications anymore, argues Dusty-Lee Donnelly of the \href{https://ukzn.ac.za/}{University of KwaZulu-Natal}.\footnote{See \textit{Donnelly, D. (2021)}: The privacy by design approach for mobile apps \cite{privacyDesign}}
+
+All our experts are in agreement, that even though the loss of the tracking cookie will affect the availability of third party data, it will remain an important factor in online marketing.
